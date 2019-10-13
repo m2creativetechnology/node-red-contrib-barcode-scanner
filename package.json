@@ -4,8 +4,7 @@
   "description": "Barcode scanner node for Node-RED",
   "main": "barcode-scanner.js",
   "dependencies": {
-    "node-hid": "file:node_modules/node-hid",
-    "node-usb-barcode-scanner": "^1.0.1"
+    "node-hid-stream": "^1.1.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -13,17 +12,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SteampunkProfessor/node-red-contrib-barcode-scanner.git"
+    "url": "git+https://github.com/m2creativetechnology/node-red-contrib-barcode-scanner.git"
   },
   "keywords": [
     "node-red",
     "barcode",
     "scanner"
   ],
-  "author": "Steampunk Professor <steampunkprofessor@gmail.com>",
-  "license": "Apache-2.0",
+  "author": "Christian Moll <christian@chrmoll.de>",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SteampunkProfessor/node-red-contrib-barcode-scanner/issues"
+    "url": "https://github.com/m2creativetechnology/node-red-contrib-barcode-scanner/issues"
   },
-  "homepage": "https://github.com/SteampunkProfessor/node-red-contrib-barcode-scanner#readme"
+  "homepage": "https://github.com/m2creativetechnology/node-red-contrib-barcode-scanner#readme"
 }
