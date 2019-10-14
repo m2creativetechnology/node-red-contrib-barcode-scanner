@@ -1,22 +1,22 @@
-"use strict";
-var KeyboardLines = require('node-hid-stream').KeyboardLines;
-var lines = new KeyboardLines({ vendorId: 0x2010, productId: 0x7638 });
-
 module.exports = function(RED) {
+    function BarcodeScannerNode(config) {
+        RED.nodes.createNode(this,config);
 
-	function BarcodeScannerNode(config) {
-  	RED.nodes.createNode(this, config);
-		var node = this;
+        var node = this;
+        var msg = {};
+        var KeyboardLines = require('node-hid-stream').KeyboardLines;
+        var lines = new KeyboardLines({ vendorId: config.vendorId, productId: config.productId });
 
-		lines.on("data", function(data) {
-		  console.log(data);
-			msg.topic = node.topic;
-			msg.payload = data;
-			node.send(msg);
-		});
-	}
+        lines.on("data", function(data) {
+    			msg.topic = config.topic;
+    			msg.payload = data;
+    			node.send(msg);
+    		});
 
-  // Register the node by name. This must be called before overriding any of the
-  // Node functions.
-  RED.nodes.registerType("barcode-scanner",BarcodeScannerNode);
+        node.on('close', function() {
+          // tidy up any state
+          lines.close();
+        });
+    }
+    RED.nodes.registerType("barcode-scanner",BarcodeScannerNode);
 }
